@@ -2,7 +2,6 @@ import { useState } from "react";
 
 export default function App() {
   const [items, setItem] = useState([]);
-  const [isPin, setIsPin] = useState(false);
 
   const addItemHandler = (item) => {
     setItem((items) => [...items, item]);
@@ -21,14 +20,10 @@ export default function App() {
     );
   };
 
-  const pinHandler = () => {
-    setIsPin((pervItem) => !pervItem);
-  };
-
   return (
     <div className="container">
-      <SideBar pinHandler={pinHandler} isPin={isPin} />
-      <div className={`app ${isPin ? "pinMain" : ""}`}>
+      {/* <SideBar pinHandler={pinHandler} isPin={isPin} /> */}
+      <div className="app">
         <Logo />
         <Form onAddItem={addItemHandler} />
         <PackingList
@@ -128,69 +123,69 @@ function Stats() {
   );
 }
 
-function SideBar({ pinHandler, isPin }) {
-  const [closeSubSideBar, setCloseSideBar] = useState(true);
-  const openSubSideBarHandler = () => {
-    setCloseSideBar((closeSubSideBar) => !closeSubSideBar);
+// function SideBar({ pinHandler, isPin }) {
+//   const [closeSubSideBar, setCloseSideBar] = useState(true);
+//   const openSubSideBarHandler = () => {
+//     setCloseSideBar((closeSubSideBar) => !closeSubSideBar);
 
-    isPin && pinHandler();
-  };
-  return (
-    <div className="sideBarContainer">
-      <ul>
-        <li>
-          <button>item1</button>
-        </li>
-        <li>
-          <button>item2</button>
-        </li>
-        <li>
-          <button onClick={openSubSideBarHandler}>item3</button>
-        </li>
-        <li>
-          <button>item4</button>
-        </li>
-      </ul>
+//     isPin && pinHandler();
+//   };
+//   return (
+//     <div className="sideBarContainer">
+//       <ul>
+//         <li>
+//           <button>item1</button>
+//         </li>
+//         <li>
+//           <button>item2</button>
+//         </li>
+//         <li>
+//           <button onClick={openSubSideBarHandler}>item3</button>
+//         </li>
+//         <li>
+//           <button>item4</button>
+//         </li>
+//       </ul>
 
-      <SubMenu
-        pinHandler={pinHandler}
-        isPin={isPin}
-        isCloseSubSideBar={closeSubSideBar}
-      />
-    </div>
-  );
-}
+//       <SubMenu
+//         pinHandler={pinHandler}
+//         isPin={isPin}
+//         isCloseSubSideBar={closeSubSideBar}
+//       />
+//     </div>
+//   );
+// }
 
-function SubMenu({ pinHandler, isPin, isCloseSubSideBar }) {
-  return (
-    <div
-      className={`subMenuContainer  ${isCloseSubSideBar ? "closeSideBar" : ""}`}
-    >
-      <div className="pinContainer">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="4rem"
-          height="4rem"
-          viewBox="0 0 16 16"
-          onClick={pinHandler}
-          style={isPin ? { transform: "rotate(45deg)" } : {}}
-        >
-          <path
-            fill={isPin ? "#000" : "none"}
-            stroke="#000"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1.5"
-            d="m10.25 10.25l4 4m-12.5-7.5l5-5s1 2 2 3s4.5 2 4.5 2l-6.5 6.5s-1-3.5-2-4.5s-3-2-3-2"
-          />
-        </svg>
-      </div>
-      <ul>
-        <li>Sub Menu 1</li>
-        <li>Sub Menu 2</li>
-        <li>Sub Menu 3</li>
-        <li>Sub Menu 4</li>
-      </ul>
-    </div>
-  );
-}
+// function SubMenu({ pinHandler, isPin, isCloseSubSideBar }) {
+//   return (
+//     <div
+//       className={`subMenuContainer  ${isCloseSubSideBar ? "closeSideBar" : ""}`}
+//     >
+//       <div className="pinContainer">
+//         <svg
+//           xmlns="http://www.w3.org/2000/svg"
+//           width="4rem"
+//           height="4rem"
+//           viewBox="0 0 16 16"
+//           onClick={pinHandler}
+//           style={isPin ? { transform: "rotate(45deg)" } : {}}
+//         >
+//           <path
+//             fill={isPin ? "#000" : "none"}
+//             stroke="#000"
+//             stroke-linecap="round"
+//             stroke-linejoin="round"
+//             stroke-width="1.5"
+//             d="m10.25 10.25l4 4m-12.5-7.5l5-5s1 2 2 3s4.5 2 4.5 2l-6.5 6.5s-1-3.5-2-4.5s-3-2-3-2"
+//           />
+//         </svg>
+//       </div>
+//       <ul>
+//         <li>Sub Menu 1</li>
+//         <li>Sub Menu 2</li>
+//         <li>Sub Menu 3</li>
+//         <li>Sub Menu 4</li>
+//       </ul>
+//     </div>
+//   );
+// }
