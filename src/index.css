@@ -18,26 +18,11 @@ body {
   font-weight: 500;
 }
 
-ul {
-  list-style-type: none;
-}
-
-.container {
-  display: flex;
-  position: relative;
-  top: 0;
-  left: 0;
-}
-
 .app {
   width: 100%;
   height: 100vh;
   display: grid;
   grid-template-rows: auto auto 1fr auto;
-}
-
-.app.pinMain {
-  margin-left: 300px;
 }
 
 h1 {
@@ -89,8 +74,12 @@ input {
   background-color: #5a3e2b;
   color: #ffebb3;
   padding: 4rem 0;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   gap: 3.2rem;
-  overflow: hidden;
+  align-items: center;
 }
 
 .actions button,
@@ -103,27 +92,14 @@ input {
 }
 
 .list ul {
-  width: 100%;
-  height: 100%;
   list-style: none;
-  overflow-x: scroll;
-  display: flex;
+  width: 80%;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.2rem;
-  justify-content: flex-start;
-  align-content: flex-start;
-}
-
-.list ul::-webkit-scrollbar {
-  height: 8px; /* for horizontal scrollbar */
-}
-
-.list ul::-webkit-scrollbar-track {
-  border-radius: 10px;
-}
-
-.list ul::-webkit-scrollbar-thumb {
-  background: #492f1e;
-  border-radius: 10px;
+  justify-content: center;
+  align-content: start;
 }
 
 .list li {
@@ -132,18 +108,13 @@ input {
   gap: 1.2rem;
 }
 
-.itemContent {
-  display: flex;
-  gap: 1rem;
-}
-
 input[type="checkbox"] {
   height: 2rem;
   width: 2rem;
   accent-color: #e5771f;
 }
 
-.list li > button {
+.list li button {
   cursor: pointer;
   background: none;
   border: none;
@@ -157,54 +128,4 @@ input[type="checkbox"] {
   text-align: center;
   font-weight: 700;
   padding: 3.2rem 0;
-}
-
-.sideBarContainer {
-  padding: 10px;
-  background-color: #ffebb3;
-  border: 1px solid;
-}
-
-.sideBarContainer li {
-  padding: 5px;
-  margin: 15px 0;
-  background-color: red;
-  color: #fff;
-}
-
-.sideBarContainer li button {
-  background-color: inherit;
-  width: auto;
-}
-
-.subMenuContainer {
-  background-color: lightgoldenrodyellow;
-  border: 1px solid;
-  border-left: none;
-  padding: 10px 20px 10px 10px;
-  width: 300px;
-  top: 0;
-  left: 0;
-  height: 100%;
-  position: absolute;
-  margin-left: 145px;
-  z-index: 100;
-}
-
-.subMenuContainer.closeSideBar {
-  display: none;
-}
-
-.subMenuContainer .pinContainer {
-  width: 100%;
-  text-align: right;
-}
-
-.subMenuContainer .pinContainer svg {
-  cursor: pointer;
-}
-
-.subMenuContainer li {
-  padding: 5px;
-  margin: 15px 0;
 }
